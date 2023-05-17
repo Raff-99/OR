@@ -1,0 +1,37 @@
+import numpy as np
+
+# Define the cost of individual and group replacement
+individual_cost = 4000
+group_cost = 1000
+
+# Define the performance data for Model A and Model B
+model_A = [25, 20, 15, 10, 5]
+model_B = [30, 25, 20, 15, 10]
+
+# Define the probability of failure for each month
+prob_A = np.diff(model_A, prepend=100)
+prob_A = prob_A / np.sum(prob_A)
+prob_B = np.diff(model_B, prepend=100)
+prob_B = prob_B / np.sum(prob_B)
+
+# Define the expected time to failure for each model
+expected_time_A = np.sum(prob_A * np.arange(1, 6))
+expected_time_B = np.sum(prob_B * np.arange(1, 6))
+
+# Define the expected fuel consumption until failure for each model
+expected_fuel_A = np.sum(model_A * prob_A * np.arange(1, 6))
+expected_fuel_B = np.sum(model_B * prob_B * np.arange(1, 6))
+
+# Define the expected fuel consumption for each replacement policy
+policy_A = expected_fuel_A + individual_cost / expected_time_A
+policy_B = expected_fuel_B + group_cost / expected_time_B
+
+# Determine the optimal replacement policy
+if policy_A < policy_B:
+    print("The optimal replacement policy is to replace Model A cars individually.")
+    print("The expected fuel consumption until failure is", expected_fuel_A, "and the expected time to failure is", expected_time_A, "months.")
+    print("The total expected cost is", policy_A, "dollars.")
+else:
+    print("The optimal replacement policy is to replace Model B cars as a group.")
+    print("The expected fuel consumption until failure is", expected_fuel_B, "and the expected time to failure is", expected_time_B, "months.")
+    print("The total expected cost is", policy_B, "dollars.")
