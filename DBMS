@@ -1,0 +1,64 @@
+-- Create the table
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  age INT,
+  grade CHAR(1)
+);
+
+-- Insert data into the table
+INSERT INTO students (id, name, age, grade)
+VALUES
+  (1, 'John Doe', 18, 'A'),
+  (2, 'Jane Smith', 19, 'B'),
+  (3, 'Mike Johnson', 20, 'C'),
+  (4, 'Sarah Williams', 18, 'A');
+
+-- Verify the inserted data
+SELECT * FROM students;
+
+
+-- 1. Select all students
+SELECT * FROM students;
+
+-- 2. Select students with age greater than 20
+SELECT * FROM students WHERE age > 20;
+
+-- 3. Select students with grade 'A'
+SELECT * FROM students WHERE grade = 'A';
+
+-- 4. Select the name of the oldest student
+SELECT name FROM students ORDER BY age DESC LIMIT 1;
+
+-- 5. Count the number of students
+SELECT COUNT(*) FROM students; 
+
+-- 6. Select students ordered by name in ascending order
+SELECT * FROM students ORDER BY name ASC;
+
+-- 7. Select students with names starting with 'J'
+SELECT * FROM students WHERE name LIKE 'J%';
+
+-- 8. Select students with grades 'A' or 'B'
+SELECT * FROM students WHERE grade IN ('A', 'B');
+
+-- 9. Update the age of a student with id 2
+UPDATE students SET age = 20 WHERE id = 2;
+
+-- 10. Delete a student with id 3
+DELETE FROM students WHERE id = 3;
+
+-- 11. Select the average age of all students
+SELECT AVG(age) FROM students;
+
+-- 12. Select the names and ages of students between the ages of 18 and 22
+SELECT name, age FROM students WHERE age BETWEEN 18 AND 22;
+
+-- 13. Select the names of students whose names contain the letter 'a'
+SELECT name FROM students WHERE name LIKE '%a%';
+
+-- 14. Select the names and grades of students in alphabetical order of names
+SELECT name, grade FROM students ORDER BY name ASC;
+
+-- 15. Select the count of students for each grade
+SELECT grade, COUNT(*) FROM students GROUP BY grade;
