@@ -1,0 +1,90 @@
+-- Create the table
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  age INT,
+  grade CHAR(1)
+);
+
+-- Insert data into the table
+INSERT INTO students (id, name, age, grade)
+VALUES
+  (1, 'John Doe', 18, 'A'),
+  (2, 'Jane Smith', 19, 'B'),
+  (3, 'Mike Johnson', 20, 'C'),
+  (4, 'Sarah Williams', 18, 'A');
+
+-- Retrieve all students' information
+SELECT * FROM students;
+
+-- Retrieve the names of all students
+SELECT name FROM students;
+
+-- Retrieve the names and ages of students
+SELECT name, age FROM students;
+
+-- Retrieve the names and grades of students who are 18 years old
+SELECT name, grade FROM students WHERE age = 18;
+
+-- Retrieve the number of students
+SELECT COUNT(*) FROM students;
+
+-- Retrieve the names of students in ascending order
+SELECT name FROM students ORDER BY name ASC;
+
+-- Retrieve the names of students in descending order
+SELECT name FROM students ORDER BY name DESC;
+
+-- Retrieve the names and grades of students in grade 'A'
+SELECT name, grade FROM students WHERE grade = 'A';
+
+-- Retrieve the average age of all students
+SELECT AVG(age) FROM students;
+
+-- Retrieve the names and ages of students who are older than 19
+SELECT name, age FROM students WHERE age > 19;
+
+-- Retrieve the names and grades of students whose names start with 'J'
+SELECT name, grade FROM students WHERE name LIKE 'J%';
+
+-- Retrieve the names and ages of students sorted by age in descending order
+SELECT name, age FROM students ORDER BY age DESC;
+
+-- Retrieve the maximum age among all students
+SELECT MAX(age) FROM students;
+
+-- Retrieve the minimum age among all students
+SELECT MIN(age) FROM students;
+
+-- Retrieve the names and ages of students whose names contain 'Smith'
+SELECT name, age FROM students WHERE name LIKE '%Smith%';
+
+-- Retrieve the names and ages of students whose ages are between 18 and 20
+SELECT name, age FROM students WHERE age BETWEEN 18 AND 20;
+
+-- Retrieve the names and grades of students in grade 'A' or 'B'
+SELECT name, grade FROM students WHERE grade IN ('A', 'B');
+
+-- Retrieve the names and ages of students in grade 'C' and older than 19
+SELECT name, age FROM students WHERE grade = 'C' AND age > 19;
+
+-- Retrieve the names and ages of students whose names end with 'son'
+SELECT name, age FROM students WHERE name LIKE '%son';
+
+-- Retrieve the names and ages of students whose names contain 'a' and are in grade 'A'
+SELECT name, age FROM students WHERE name LIKE '%a%' AND grade = 'A';
+
+-- Update the grade of student with id 2 to 'A'
+UPDATE students SET grade = 'A' WHERE id = 2;
+
+-- Delete the student with id 4 from the table
+DELETE FROM students WHERE id = 4;
+
+-- Retrieve the names and ages of students sorted by age in ascending order, and only display the first 3 records
+SELECT name, age FROM students ORDER BY age ASC LIMIT 3;
+
+-- Calculate the total number of students grouped by grade
+SELECT grade, COUNT(*) FROM students GROUP BY grade;
+
+-- Retrieve the names and ages of the oldest two students
+SELECT name, age FROM students ORDER BY age DESC LIMIT 2;
